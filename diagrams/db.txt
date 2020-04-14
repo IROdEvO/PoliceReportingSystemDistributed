@@ -1,0 +1,84 @@
+create database PoliceReportSystemDB;
+
+use PoliceReportSystemDB;
+
+create table Admin(
+	ID int,
+	name varchar(30) not null,
+	type varchar(40) not null,
+	constraint pk_preference primary key(ID)
+	);
+
+create table Police_Officer(
+	Police_ID int,
+	Admin_ID int not null,
+	firstname varchar(30),
+	lastname varchar(40) not null,
+	password varchar(8),
+	email varchar(60),
+	constraint pk_preference primary key(Police_ID),
+	constraint fk_preference foreign key(Admin_ID) references Admin(ID)
+	);
+
+create table Driver(
+	Licence_No int,
+	Admin_ID int not null,
+	NIC char(10),
+	firstname varchar(30),
+	lastname varchar(40) not null,
+	password varchar(8),
+	email varchar(60),
+	address varchar(200),
+	constraint pk_preference primary key(Licence_No),
+	constraint fk_preference foreign key(Admin_ID) references Admin(ID)
+	);
+
+create table Fines(
+	Fine_No int,
+	Licence_No int not null,
+	Police_ID int not null,
+	Police_station varchar(100),
+	status varchar(30) not null,
+	court varchar(100) not null,
+	court_date datetime not null,
+	vehical_category varchar(50),
+	Total_amount decimal(7,2),
+	vehicle_No varchar(20),
+	valid_until datetime,
+	Issue_date datetime,
+	Issue_time datetime,
+	constraint pk_preference primary key(Fine_No),
+	constraint fk_preference foreign key(Licence_No) references Driver(Licence_No),
+	constraint fk_preference foreign key(Police_ID) references Police_Officer(Police_ID)
+	);
+
+create table Bank(
+	Bank_ID int,
+	Account_No varchar,
+	Fine_Amount decimal(7,2),
+	constraint pk_preference primary key(Bank_ID)
+);
+
+create table Make_Payment(
+	Bank_ID int,
+	Licence_No int,
+	Date datetime,
+	Time datetime,
+	constraint pk_preference primary key(Bank_ID,Licence_No),
+	constraint fk_preference foreign key(Licence_No) references Driver(Licence_No),
+	constraint fk_preference foreign key(Bank_ID) references Bank(Bank_ID)
+);
+
+create table Offences(
+	Fine_No int,
+	Offence varchar(100),
+	constraint pk_preference primary key(Fine_No,Offence),
+	constraint fk_preference foreign key(Fine_No) references Fines(Fine_No)
+);
+
+create table Category_of_Vehicles(
+	Licence_No int,
+	Category varchar(100),
+	constraint pk_preference primary key(Licence_No,Category),
+	constraint fk_preference foreign key(Licence_No) references Driver(Licence_No)
+);
