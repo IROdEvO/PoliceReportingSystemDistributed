@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get("/", (req,res)=>{
     res.json({message:"Welcome to Police Report System"});
 });
+
 require("./app/routes/admin.route.js")(app);
+require("./app/routes/policeofficer.route.js")(app);
 app.listen(PORT,()=>{
     console.log("Server is running on PORT : "+PORT);
 });
