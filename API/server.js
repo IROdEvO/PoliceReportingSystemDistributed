@@ -14,6 +14,12 @@ app.get("/", (req,res)=>{
 
 require("./app/routes/admin.route.js")(app);
 require("./app/routes/policeofficer.route.js")(app);
+require("./app/routes/fine.route.js")(app);
+require("./app/routes/driver.route.js")(app);
+require("./app/routes/bank.route.js")(app);
+require("./app/routes/offense.route.js")(app);
+require("./app/routes/vehicalcategory.route.js")(app);
+require("./app/routes/payment.route.js")(app);
 app.listen(PORT,()=>{
     console.log("Server is running on PORT : "+PORT);
 });
