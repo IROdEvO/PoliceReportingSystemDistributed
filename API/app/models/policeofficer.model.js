@@ -118,7 +118,7 @@ Officer.delete = (policeid,result) =>{
     });
 };
 
-Officer.deleteAll = (policeid,result) =>{
+Officer.deleteAll = (result) =>{
     sql.query("DELETE FROM Police_Officer",(err,res)=>{
         if(err){
             console.log("Error: ",err);
