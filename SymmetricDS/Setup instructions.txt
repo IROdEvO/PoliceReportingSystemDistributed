@@ -1,3 +1,5 @@
+https://www.jumpmind.com/products/symmetricds/download
+
 Download the executable jar file from the provided link and install it(Required JDK).
 
 Then start the server using SymmetricDS control panel from the start menu shortcut and open the web dashboard.
