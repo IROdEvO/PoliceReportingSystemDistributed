@@ -1,0 +1,17 @@
+https://www.jumpmind.com/products/symmetricds/download
+
+Download the executable jar file from the provided link and install it(Required JDK).
+
+Then start the server using SymmetricDS control panel from the start menu shortcut and open the web dashboard.
+
+In the web dashboard enter the trial key provided to continue.
+
+Create a server on from the dashboard and add the Master DB by providing database url and credentials.
+
+Then create a Slave DB on the local node by providing the db url and credentials.
+
+For the trigger based capture Master DB is the source and the Slave DB is the target.
+
+After that the dashboard will prompt to select tables to replicate, select the tables and finish the setup.
+
+If everything was done, there should be no errors and the databases should be in sync.
